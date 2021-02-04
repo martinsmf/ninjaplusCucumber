@@ -20,14 +20,11 @@ public class MovieSteps extends BaseTest {
     public void que_é_um_novo_filme(String movies) {
         movie.add();
         movie.create(movies);
-        throw new io.cucumber.java.PendingException();
-
     }
 
     @When("eu faço o cadastro desse filme")
     public void eu_faço_o_cadastro_desse_filme() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        movie.register();
     }
 
     @Then("devo ver o novo filme na lista")
