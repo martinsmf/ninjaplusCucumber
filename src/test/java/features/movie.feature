@@ -9,7 +9,7 @@ Feature: Cadastro de filme
   Scenario Outline: Novo Filme
     Given que <codigo> é um novo filme
     When eu faço o cadastro desse filme
-    Then devo ver o novo filme na lista
+    Then devo ver o novo filme <codigo> na lista
 
     Examples:
       | codigo     |
