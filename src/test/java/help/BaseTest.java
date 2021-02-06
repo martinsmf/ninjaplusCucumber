@@ -1,7 +1,10 @@
 package help;
 
 import com.codeborne.selenide.Configuration;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import libis.DataBase;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.MoviePage;
@@ -15,7 +18,7 @@ public class BaseTest {
     protected static MoviePage movie;
     protected static DataBase db;
 
-    //@BeforeMethod
+
     public void start() {
 
         Configuration.timeout = 10000;

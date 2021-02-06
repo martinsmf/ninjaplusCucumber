@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.Properties;
 
 import static com.codeborne.selenide.Condition.text;
@@ -28,6 +29,10 @@ public class MoviePage {
         $("input[placeholder^=Pesquisar]").setValue(vaule);
         $("#search-movie").click();
         return this;
+    }
+
+    public   String alert(){
+        return $(".alert-info span").text();
     }
 
     public MoviePage create(String movie) {
@@ -54,8 +59,14 @@ public class MoviePage {
     }
 
     private void selectStatus(String movie) {
+        String status = prop.propertis(movie,".status");
         $("input[placeholder=Status]").click();
-        $$("ul li span").findBy(text(prop.propertis(movie, ".status"))).click();
+        if(status.equals("")){
+            $("input[placeholder=Status]").click();
+        }else {
+            $$("ul li span").findBy(text(status)).click();
+        }
+
     }
 
     private void inputCast(String movie) {
@@ -70,9 +81,11 @@ public class MoviePage {
 
     private void upLoad(String movie){
         File cover = new File(this.coverPath() + prop.propertis(movie, ".cover"));
-        executeJavaScript("document.getElementById('upcover').classList.remove('el-upload__input');");
-        $("#upcover").uploadFile(cover);
-        executeJavaScript("document.getElementById('upcover').classList.add('el-upload__input');");
+        if(cover.exists()) {
+            executeJavaScript("document.getElementById('upcover').classList.remove('el-upload__input');");
+            $("#upcover").uploadFile(cover);
+            executeJavaScript("document.getElementById('upcover').classList.add('el-upload__input');");
+        }
     }
 
     private String coverPath(){
@@ -86,8 +99,5 @@ public class MoviePage {
         }
         return target;
     }
-
-
-
 
 }

@@ -10,7 +10,6 @@ import static org.testng.Assert.assertEquals;
 
 public class LoginSteps extends BaseTest {
 
-
     @When("eu faco login com {string} e {string}")
     public void eu_faco_login_com_e(String email, String pass) {
         start();
