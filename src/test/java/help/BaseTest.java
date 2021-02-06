@@ -7,13 +7,15 @@ import pages.LoginPage;
 import pages.MoviePage;
 import pages.SideBar;
 
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+
 public class BaseTest {
     protected static LoginPage login;
     protected static SideBar side;
     protected static MoviePage movie;
     protected static DataBase db;
 
-    @BeforeMethod
+    //@BeforeMethod
     public void start() {
 
         Configuration.timeout = 10000;
@@ -26,7 +28,9 @@ public class BaseTest {
 
     }
 
-
+    public void thenAnd(){
+            executeJavaScript("localStorage.clear();");
+    }
 
 
 

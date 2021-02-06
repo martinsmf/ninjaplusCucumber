@@ -6,6 +6,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+
 
 public class MovieSteps extends BaseTest {
 
@@ -34,7 +37,7 @@ public class MovieSteps extends BaseTest {
 
     @Then("devo ver o novo filme {string} na lista")
     public void devo_ver_o_novo_filme_na_lista(String movies) {
-        movie.item(movies);
-
+        movie.item().findBy(text(prop.propertis(movies, ".title"))).shouldBe(visible);
+        thenAnd();
     }
 }

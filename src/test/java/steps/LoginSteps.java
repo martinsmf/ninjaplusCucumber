@@ -29,5 +29,6 @@ public class LoginSteps extends BaseTest {
     public void devo_ver_a_mensagem_de_alerta(String alert) {
         login.alert().shouldHave(text(alert));
         assertEquals(login.alertText(), alert);
+        thenAnd();
     }
 }

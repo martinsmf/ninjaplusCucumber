@@ -14,5 +14,5 @@ Feature: Cadastro de filme
     Examples:
       | codigo     |
       | "ultimato" |
-#      | "spider"   |
-#      | "jocker"   |
+      | "spider"   |
+      | "jumanji2" |

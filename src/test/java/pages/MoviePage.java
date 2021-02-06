@@ -49,9 +49,8 @@ public class MoviePage {
         $("#create-movie").click();
     }
 
-    public MoviePage item(String movie){
-        $$("table tbody tr").findBy(text(prop.propertis(movie, ".title"))).shouldBe(visible);
-        return this;
+    public ElementsCollection item(){
+       return  $$("table tbody tr");
     }
 
     private void selectStatus(String movie) {
